@@ -1,0 +1,16 @@
+{% extends 'layout/general.html' %}
+{% block title %}
+    clase
+{% endblock %}
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="" name="name" id="name">Nombre Clase :</label>
+        <input type="text" name="name" id="name">
+        <label for="" name="code" id="code">Codigo :</label>
+        <input type="text" name="code" id="code">
+        <label for="" name="department" id="department">Departamento :</label>
+        <input type="text" name="department" id="department">
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'layout/general.html' %}
+{% block title %}
+    Indice
+{% endblock %}
+{% block content %}
+    <h1>Hola esta es mi primer pag</h1>
+    <a href="{% url 'create' %}"> Crear una nueva clase</a>
+    <table class="table table-hover mt-5">
+        <thead class="table-primary">
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Departamento</th>
+        <th>Acciones</th>
+        </thead>
+        <tbody>
+        {% for item in universityClass %}
+            <tr>
+                <td>{{ item.code }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.department }}</td>
+                <td><a href="{% url 'retrieve' item.pk %}">ver</a>
+                    <a href="{% url 'edit' item.pk %}">editar</a>
+                    <form action="{% url 'delete' item.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
